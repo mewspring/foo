@@ -29,6 +29,6 @@ FuncHeader -> FuncHeader
 #       previous declaration at ./listener.go:15:2
 #    make: *** [Makefile:9: gen] Error 2
 
-GC -> GCNode
+GC -> GC
 	: 'gc' string_lit
 ;
