@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/mewspring/foo/none"
-	"github.com/mewspring/foo/none/ll/ast"
+	"github.com/mewspring/foo/none/mini/ast"
 )
 
 func main() {

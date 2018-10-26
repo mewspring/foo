@@ -4,8 +4,8 @@ import (
 	"io/ioutil"
 
 	"github.com/inspirer/textmapper/tm-go/status"
-	"github.com/mewspring/foo/none/ll"
-	"github.com/mewspring/foo/none/ll/ast"
+	"github.com/mewspring/foo/none/mini"
+	"github.com/mewspring/foo/none/mini/ast"
 	"github.com/pkg/errors"
 )
 
@@ -22,9 +22,9 @@ func ParseFile(path string) (*ast.Module, error) {
 // Parse parses the given LLVM IR assembly file into an LLVM IR module, reading
 // from content.
 func Parse(filename, content string) (*ast.Module, error) {
-	var l ll.Lexer
+	var l mini.Lexer
 	l.Init(content)
-	var p ll.Parser
+	var p mini.Parser
 	b := newBuilder(filename, content)
 	//p.Init(b.addError, b.addNode)
 	p.Init(b.addNode)
@@ -56,14 +56,14 @@ func newBuilder(filename, content string) *builder {
 	}
 }
 
-func (b *builder) addError(se ll.SyntaxError) bool {
+func (b *builder) addError(se mini.SyntaxError) bool {
 	r := b.file.sourceRange(se.Offset, se.Endoffset)
 	b.status.Add(r, "syntax error")
 	return true
 }
 
-func (b *builder) addNode(t ll.NodeType, offset, endoffset int) {
-	if t == ll.Module {
+func (b *builder) addNode(t mini.NodeType, offset, endoffset int) {
+	if t == mini.Module {
 		offset, endoffset = 0, len(b.file.content)
 	}
 

@@ -5,9 +5,9 @@ import (
 	"strings"
 
 	"github.com/inspirer/textmapper/tm-go/status"
-	"github.com/mewspring/foo/none/ll"
-	"github.com/mewspring/foo/none/ll/ast"
-	"github.com/mewspring/foo/none/ll/selector"
+	"github.com/mewspring/foo/none/mini"
+	"github.com/mewspring/foo/none/mini/ast"
+	"github.com/mewspring/foo/none/mini/selector"
 )
 
 // file holds an AST of a single file and can covert offset ranges into status.SourceRange.
@@ -23,7 +23,7 @@ func (f *file) root() ast.Node {
 }
 
 type chunk struct {
-	t          ll.NodeType
+	t          mini.NodeType
 	offset     int
 	endoffset  int
 	next       int
@@ -71,10 +71,10 @@ type node struct {
 }
 
 // Type implements ast.Node
-func (n node) Type() ll.NodeType {
+func (n node) Type() mini.NodeType {
 	if n.file == nil {
 		// TODO: introduce InvalidType
-		return ll.NodeType(0)
+		return mini.NodeType(0)
 	}
 	return n.file.parsed[n.index].t
 }
