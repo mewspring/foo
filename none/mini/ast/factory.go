@@ -3,8 +3,9 @@
 package ast
 
 import (
+	"fmt"
+
 	"github.com/mewspring/foo/none/mini"
-	"log"
 )
 
 func ToLlvmNode(n Node) LlvmNode {
@@ -63,6 +64,5 @@ func ToLlvmNode(n Node) LlvmNode {
 	case mini.VoidType:
 		return &VoidType{n}
 	}
-	log.Fatalf("unknown node type %v\n", n.Type())
-	return nil
+	panic(fmt.Sprintf("unknown node type %v", n.Type()))
 }
