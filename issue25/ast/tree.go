@@ -3,8 +3,8 @@
 package ast
 
 import (
-	"github.com/mewspring/foo/issue24"
-	"github.com/mewspring/foo/issue24/selector"
+	"github.com/mewspring/foo/issue25"
+	"github.com/mewspring/foo/issue25/selector"
 	"sort"
 	"strings"
 )
@@ -39,7 +39,7 @@ func (t *Tree) Text() string {
 
 // Node is an AST node.
 type Node struct {
-	t          issue24.NodeType
+	t          issue25.NodeType
 	offset     int
 	endoffset  int
 	parent     *Node
@@ -54,9 +54,9 @@ func (n *Node) IsValid() bool {
 }
 
 // Type returns
-func (n *Node) Type() issue24.NodeType {
+func (n *Node) Type() issue25.NodeType {
 	if n == nil {
-		return issue24.NoType
+		return issue25.NoType
 	}
 	return n.t
 }

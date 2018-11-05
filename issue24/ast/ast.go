@@ -28,11 +28,11 @@ func (n Foo) Src() ID {
 
 func (n Foo) Indices() []ID {
 	nodes := n.Child(selector.ID).NextAll(selector.ID)
-	var result = make([]ID, 0, len(nodes))
+	var ret = make([]ID, 0, len(nodes))
 	for _, node := range nodes {
-		result = append(result, ID{node})
+		ret = append(ret, ID{node})
 	}
-	return result
+	return ret
 }
 
 type ID struct {
